@@ -8,8 +8,14 @@ import TeamList from './team-list';
 import TeamStat from './team.stat';
 import Player from './player';
 export default class App extends Component {
-  getPlayers() {
-    return [
+  constructor(props){
+    super(props);
+    //setting up state
+    this.state={players: [] };
+  }
+
+  componentWillMount(){
+    this.setState({players:  [
       {
         _id: 1,
         name: "Gkosmo",
@@ -46,12 +52,12 @@ export default class App extends Component {
         gameStrategy: 2,
         playmakingRisks:1
       }
-    ];
+    ]});
   }
 
 
   renderPlayers() {
-   return this.getPlayers().map((player) => (
+   return this.state.players.map((player) => (
      <TeamList key={player._id} player={player} />
    ));
   }
@@ -68,6 +74,7 @@ export default class App extends Component {
             <div className="col s12 m7"> < Player /> </div>
             <div className="col s12 m5"> TeamStat </div>
             <div className="col s12 m5">
+              <h2> Team List: </h2>
               <Divider/>
               <List>
                 {this.renderPlayers()}

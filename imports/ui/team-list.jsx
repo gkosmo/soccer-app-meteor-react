@@ -6,7 +6,7 @@ export default class TeamList extends Component {
   render(){
     return (
       <ListItem
-        primaryTest= {this.props.player.name}
+        primaryText= {this.props.player.name}
         leftAvatar={<Avatar src='images/fight.jpeg'/>}
       />
     )
